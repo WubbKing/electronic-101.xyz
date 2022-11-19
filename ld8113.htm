@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Electronic 101 - Driving an LD8113 VFD Tube</title>
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFFF00" vlink="#00FF00">
+
+<p align="center"><font size="7"><b>Driving an LD8113 VFD Tube</b></font></p>
+<hr>
+<p align="left">In this tutorial, we will learn how to drive an NEC LD8113 VFD
+tube with simple 74-series logic.</p>
+<p align="left">The key to this tutorial is to have it display numerals 0...9
+with a centered 1.</p>
+<p align="left">This logic is just like Gottlieb's logic as used on pinball
+tables from Cleopatra SS (1977) to Ice Fever (1985).</p>
+<hr>
+<p align="center"><img border="0" src="LD8113.jpg" width="107" height="195"></p>
+<p align="left">So we have our VFD tube... now what? We can't just run <i>everything</i>
+off of 5V... the filament will burn out if we do that! And that voltage is also
+too weak for the grid and anode plates.</p>
+<p align="left">What we do is use a buck converter set between 1 and 2V for the
+filament and a boost converter set about 18V for the grid and segments. This
+gives a nice, bright display.</p>
+<p align="left">Then for the logic, we use a 74LS48 with BCD paralleled to a
+74LS04 and a 74LS21. We invert lines B, C, and D with three stages of the
+74LS04, leave A noninverted, and feed them into a four-input AND from half the
+74LS21. This output gives us both the extra segment for the 1 and an input for
+another stage of the 74LS04, giving us an inverted output for the blanking input
+of the 74LS48.</p>
+<p align="left">But... where does 18V come in? We use a source driver, such as
+the UDN6118A or the UDN2981A, to drive the segments at 18V from TTL logic
+signals.</p>
+<p align="center"><img border="0" src="LD8113Control.GIF" width="819" height="329"></p>
+<p align="left">Follow this schematic and you should get a 0 on startup with all
+BCD inputs grounded. With a BCD code of 0001 loaded, the 1 should center itself
+on the extra segment in the display. All other numerals should appear as normal.</p>
+<p align="left">For reference, see the GIF below...</p>
+<p align="center"><img border="0" src="LD8113_Animated.gif" width="150" height="200"><br>
+What the display should look like with the above logic setup.</p>
+<hr>
+<ul>
+  <li><a href="welcome.htm">Home</a></li>
+  <li><a href="vfd.htm">Vacuum Fluorescent Displays</a></li>
+  <li>Driving an LD8113 VFD Tube (you are here)</li>
+</ul>
+
+</body>
+
+</html>
