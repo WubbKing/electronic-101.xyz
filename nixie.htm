@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Electronic 101 - Nixie Tubes</title>
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFFF00" vlink="#00FF00">
+
+<p align="center"><b><font size="7">Nixie Tubes</font></b></p>
+<hr>
+<p align="center"><b>A word of warning before reading on:</b> Nixie tubes
+require a <u>high voltage</u> (approx. 170V DC) to light! Replicate any Nixie
+tube circuit <b>at your own risk</b>... mishandling the high voltage line can
+lead to fatal injuries.</p>
+<hr>
+<p align="left">A <b>Nixie tube</b> is a display device
+that uses a gas, neon in this case, to light numeral-shaped wire forms inside
+the tube. The gas is ignited at a relatively high voltage, about 170 to 200
+volts DC, and a selected numeral glows when the anode grid is referenced to the
+high voltage positive and the numeral electrode is grounded.</p>
+<p align="center"><img border="0" src="GR110.jpg" width="103" height="237"><br>
+Typical Nixie tube. Model GR110.</p>
+<p align="left">To test a Nixie tube, you will need to connect a 120V AC line to
+a diode as so...</p>
+<p align="center"><img border="0" src="120VACDiode.GIF" width="298" height="100"></p>
+<p align="left">This will give you a crude, <b>yet dangerous</b>, 170V DC supply
+to work with.</p>
+<p align="left">Attach a 10K resistor (smaller value for larger tubes) to the
+cathode side of your supply's diode (after the AC) to limit the current to the
+tube, then attach that to the anode pin of your tube.</p>
+<p align="left">The other side of the AC line connects directly to a cathode.
+The tube should light.</p>
+<p align="left"><b>CAUTION: </b>Do not short the supply.</p>
+<hr>
+<p align="left">So we have testing down... let's hook one up.</p>
+<p align="left">We need a special chip for this... the 74141. This chip was made
+special for driving these tubes! Hook it up like so...</p>
+<p align="center"><img border="0" src="NixieLogic.GIF" width="640" height="387"></p>
+<p align="left">As you can see from above, there are four inputs and ten
+outputs. Simple! Your four inputs are BCD and determine which of the ten outputs
+goes low for the Nixie to light. If the input is over-range (past 1001), it will
+output all high outputs and blank the tube out.</p>
+<p align="left">Below is a GIF of an XN12 tube which represents what the Nixie
+should look like when hooked up properly...</p>
+<p align="center">.<img border="0" src="XN12_animated.gif" width="59" height="150"></p>
+<hr>
+<ul>
+  <li><a href="welcome.htm">Home</a></li>
+  <li><a href="vfd.htm">Vacuum Fluorescent Displays</a></li>
+  <li><a href="ld8113.htm">Driving an LD8113 VFD Tube</a></li>
+  <li>Nixie Tubes (you are here)</li>
+</ul>
+
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>
